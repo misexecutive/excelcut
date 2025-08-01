@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExcelCut Tech Training Registration</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for Inter font and general body styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Gradient background with shades of blue */
+            background: linear-gradient(to bottom right, #e0f2fe, #bbdefb, #90caf9); /* Light blue to a slightly darker blue */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem; /* Add some padding around the content */
+            box-sizing: border-box; /* Ensure padding is included in element's total width and height */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Custom multi-select dropdown styles */
+        .custom-multi-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .custom-multi-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            border: 1px solid #d1d5db; /* gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+            min-height: 42px; /* To match input height */
+        }
+        .custom-multi-select-trigger:hover {
+            border-color: #60a5fa; /* blue-400 */
+        }
+        .custom-multi-select-trigger.active {
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 */
+        }
+        .custom-multi-select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            z-index: 10;
+            max-height: 200px; /* Limit height for scrollability */
+            overflow-y: auto;
+            display: none; /* Hidden by default */
+            margin-top: 0.25rem; /* mt-1 */
+        }
+        .custom-multi-select-options.open {
+            display: block;
+        }
+        .custom-multi-select-option {
+            padding: 0.75rem 1rem; /* Adjust padding for better look */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            font-size: 1rem; /* Consistent font size */
+        }
+        .custom-multi-select-option:hover {
+            background-color: #eff6ff; /* blue-50 */
+        }
+        .custom-multi-select-option.selected {
+            background-color: #dbeafe; /* blue-100 */
+            color: #1e40af; /* blue-800 */
+            font-weight: 500;
+        }
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #6b7280; /* gray-500 */
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .custom-multi-select-trigger.active .arrow-down {
+            transform: rotate(180deg);
+        }
+        .selected-courses-display {
+            flex-grow: 1;
+            color: #4a5568; /* gray-700 */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .placeholder-text {
+            color: #a0aec0; /* gray-400 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="w-full max-w-md bg-white rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-blue-100">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2">ExcelCut</h1>
+            <p class="text-lg sm:text-xl font-semibold text-blue-600">Tech Training Registration</p>
+            <p class="text-sm text-gray-500 mt-2">Join us to enhance your skills!</p>
+        </div>
+
+        <form id="registrationForm" class="space-y-6">
+            <!-- Full Name Field -->
+            <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                              focus:ring-blue-500 focus:border-blue-500 sm:text-base
+                              transition duration-200 ease-in-out hover:border-blue-400">
+            </div>
+
+            <!-- WhatsApp Field -->
+            <div>
+                <label for="whatsappNumber" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp No.:</label>
+                <input type="tel" id="whatsappNumber" name="whatsappNumber" required
+                       placeholder="Mobile No. (10 digits)"
+                       pattern="[0-9]{10}" maxlength="10"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                              focus:ring-blue-500 focus:border-blue-500 sm:text-base
+                              transition duration-200 ease-in-out hover:border-blue-400">
+                <p class="text-xs text-gray-500 mt-1">Please enter your 10-digit mobile number.</p>
+            </div>
+
+            <!-- Course Multi-select (Custom) -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Select Course(s):</label>
+                <div class="custom-multi-select-wrapper">
+                    <div id="courseSelectTrigger" class="custom-multi-select-trigger">
+                        <span id="selectedCoursesDisplay" class="selected-courses-display placeholder-text">Select Course(s)</span>
+                        <div class="arrow-down"></div>
+                    </div>
+                    <div id="courseOptions" class="custom-multi-select-options">
+                        <div class="custom-multi-select-option" data-value="Advanced Excel">Advanced Excel</div>
+                        <div class="custom-multi-select-option" data-value="Power BI">Power BI</div>
+                        <div class="custom-multi-select-option" data-value="Frontend (HTML/CSS/JS)">Frontend (HTML/CSS/JS)</div>
+                    </div>
+                    <!-- Hidden input to store the selected course values -->
+                    <input type="hidden" id="selectedCoursesInput" name="courses" value="">
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Tap to select/deselect multiple courses.</p>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-md
+                               text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700
+                               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                               transition duration-300 ease-in-out transform hover:scale-105
+                               relative overflow-hidden group">
+                    Register Now
+                </button>
+            </div>
+
+            <!-- Message Display Area -->
+            <div id="message" class="text-center text-sm font-medium mt-4 hidden"></div>
+        </form>
+    </div>
+
+    <script>
+        // Get references to the form and message display area
+        const registrationForm = document.getElementById('registrationForm');
+        const messageDiv = document.getElementById('message');
+
+        // Custom Multi-select Course Dropdown Elements
+        const courseSelectTrigger = document.getElementById('courseSelectTrigger');
+        const courseOptionsContainer = document.getElementById('courseOptions');
+        const selectedCoursesDisplay = document.getElementById('selectedCoursesDisplay');
+        const selectedCoursesInput = document.getElementById('selectedCoursesInput'); // Hidden input for form submission
+
+        let selectedCoursesArray = []; // Array to store selected course values
+
+        // Function to update the displayed selected courses and the hidden input
+        function updateSelectedCoursesDisplay() {
+            if (selectedCoursesArray.length === 0) {
+                selectedCoursesDisplay.textContent = 'Select Course(s)';
+                selectedCoursesDisplay.classList.add('placeholder-text');
+                selectedCoursesInput.value = '';
+            } else {
+                selectedCoursesDisplay.textContent = selectedCoursesArray.join(', ');
+                selectedCoursesDisplay.classList.remove('placeholder-text');
+                selectedCoursesInput.value = selectedCoursesArray.join(', ');
+            }
+        }
+
+        // Toggle custom dropdown visibility
+        courseSelectTrigger.addEventListener('click', () => {
+            courseOptionsContainer.classList.toggle('open');
+            courseSelectTrigger.classList.toggle('active');
+        });
+
+        // Handle option selection in custom dropdown
+        courseOptionsContainer.querySelectorAll('.custom-multi-select-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.dataset.value;
+                const index = selectedCoursesArray.indexOf(value);
+
+                if (index > -1) {
+                    // If already selected, deselect it
+                    selectedCoursesArray.splice(index, 1);
+                    option.classList.remove('selected');
+                } else {
+                    // If not selected, select it
+                    selectedCoursesArray.push(value);
+                    option.classList.add('selected');
+                }
+                updateSelectedCoursesDisplay();
+            });
+        });
+
+        // Close custom dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!courseSelectTrigger.contains(event.target) && !courseOptionsContainer.contains(event.target)) {
+                courseOptionsContainer.classList.remove('open');
+                courseSelectTrigger.classList.remove('active');
+            }
+        });
+
+        // Add an event listener for form submission
+        registrationForm.addEventListener('submit', async (event) => {
+            // Prevent the default form submission behavior (page reload)
+            event.preventDefault();
+
+            // Clear previous messages
+            messageDiv.textContent = '';
+            messageDiv.classList.add('hidden');
+            messageDiv.classList.remove('text-green-600', 'text-red-600');
+
+            // Collect form data
+            const fullName = document.getElementById('fullName').value;
+            const whatsappNumber = document.getElementById('whatsappNumber').value; // Changed to whatsappNumber
+
+            // Basic validation for all fields
+            if (!fullName) {
+                displayMessage('Please enter your Full Name.', 'error');
+                return;
+            }
+            if (!whatsappNumber) { // Changed to whatsappNumber
+                displayMessage('Please enter your WhatsApp Number.', 'error');
+                return;
+            }
+            if (whatsappNumber.length !== 10) { // Changed to whatsappNumber
+                displayMessage('Please enter a valid 10-digit mobile number for WhatsApp.', 'error');
+                return;
+            }
+            if (selectedCoursesArray.length === 0) {
+                displayMessage('Please select at least one course.', 'error');
+                return;
+            }
+
+            // Prepare formData with comma-separated courses from the array
+            const formData = {
+                fullName: fullName,
+                whatsapp: whatsappNumber, // Changed to whatsapp
+                courses: selectedCoursesArray.join(', ') // Join selected courses with a comma and space
+            };
+
+            // Simulate a loading state for the button
+            const submitButton = registrationForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Registering...';
+            submitButton.disabled = true;
+            submitButton.classList.add('opacity-70', 'cursor-not-allowed');
+
+            try {
+                // Simulate a POST request to a placeholder API
+                // In a real application, replace this URL with your backend endpoint
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyRc6I62atCuHqyqghyZOJCCAiMNYI4R23tzS1EsocI_aieArro13qOues1qDIUhsg0vA/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Check if the request was successful (status code 2xx)
+                    displayMessage('Registration successful! We will contact you soon.', 'success');
+                    registrationForm.reset(); // Clear the form fields
+                    selectedCoursesArray = []; // Clear the array
+                    courseOptionsContainer.querySelectorAll('.custom-multi-select-option').forEach(option => {
+                        option.classList.remove('selected'); // Remove selected class from all options
+                    });
+                    updateSelectedCoursesDisplay(); // Update display to show placeholder
+            } catch (error) {
+                // Handle network errors or other exceptions
+                console.error('Error during registration:', error);
+                displayMessage('An error occurred. Please check your internet connection and try again.', 'error');
+            } finally {
+                // Reset button state regardless of success or failure
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+                submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
+        });
+
+        /**
+         * Displays a message to the user.
+         * @param {string} message - The message to display.
+         * @param {'success' | 'error'} type - The type of message (determines color).
+         */
+        function displayMessage(message, type) {
+            messageDiv.textContent = message;
+            messageDiv.classList.remove('hidden');
+            if (type === 'success') {
+                messageDiv.classList.add('text-green-600');
+            } else if (type === 'error') {
+                messageDiv.classList.add('text-red-600');
+            }
+        }
+    </script>
+</body>
+</html>
