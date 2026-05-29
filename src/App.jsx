@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import { courses } from './data/courses'
 import CoursePage from './pages/CoursePage'
@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import SendQuery from './pages/SendQuery'
 import StudentReviews from './pages/StudentReviews'
+
+const routerBaseName = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
 const router = createBrowserRouter([
   {
@@ -28,10 +30,12 @@ const router = createBrowserRouter([
       },
       { path: 'student-reviews', element: <StudentReviews /> },
       { path: 'send-query', element: <SendQuery /> },
-      { path: '*', element: <NotFound /> },
+      { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
-])
+], {
+  basename: routerBaseName,
+})
 
 export default function App() {
   return <RouterProvider router={router} />
