@@ -1,6 +1,7 @@
 import { ArrowRight, CalendarDays, CheckCircle2, MonitorPlay, Video } from 'lucide-react'
 import FloatingElements from './FloatingElements'
 import InterestPulse from './InterestPulse'
+import VisitorCounter from './VisitorCounter'
 import WhatsAppButton from './WhatsAppButton'
 import { generalQueryMessage } from '../data/courses'
 
@@ -30,6 +31,7 @@ export default function Hero() {
             </a>
           </div>
           <InterestPulse />
+          <VisitorCounter />
         </div>
 
         <div className="hero-mockup" aria-label="Live class preview">

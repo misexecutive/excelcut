@@ -456,6 +456,53 @@ p {
   color: var(--primary-strong);
 }
 
+.visitor-counter {
+  width: min(100%, 680px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.visitor-counter__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 12px;
+  background: var(--surface-glass);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+}
+
+.visitor-counter__icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.visitor-counter small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.visitor-counter strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-strong);
+  font-size: 1.03rem;
+  line-height: 1.2;
+}
+
 .floating-elements {
   position: absolute;
   inset: 0;
@@ -1208,6 +1255,10 @@ p {
     width: 100%;
     align-items: flex-start;
     border-radius: 18px;
+  }
+
+  .visitor-counter {
+    grid-template-columns: 1fr;
   }
 
   .hero-mockup,
