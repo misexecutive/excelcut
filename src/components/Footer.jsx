@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { courses } from '../data/courses'
 
+const copyrightYear = 2026
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -20,7 +22,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="footer__copy">
-        © {new Date().getFullYear()} Kuldeep Sharma. All rights reserved.
+        © {copyrightYear} Kuldeep Sharma. All rights reserved.
       </p>
     </footer>
   )
