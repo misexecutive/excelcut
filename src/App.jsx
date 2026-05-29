@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import SendQuery from './pages/SendQuery'
 import StudentReviews from './pages/StudentReviews'
+import { ThemeProvider } from './theme/ThemeProvider'
 
 const routerBaseName = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -38,5 +39,9 @@ const router = createBrowserRouter([
 })
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  )
 }

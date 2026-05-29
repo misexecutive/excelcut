@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock, IndianRupee, Target } from 'lucide-react'
+import { CheckCircle2, Clock, IndianRupee, MessageCircleQuestion, Radio, Target } from 'lucide-react'
 import SectionTitle from '../components/SectionTitle'
 import WhatsAppButton from '../components/WhatsAppButton'
 
@@ -8,11 +8,14 @@ export default function CoursePage({ course }) {
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div>
-            <p className="eyebrow">Online course</p>
-            <h1>{course.title} Course</h1>
+            <div className="live-badge">
+              <span />
+              LIVE online class
+            </div>
+            <h1>{course.title} Live Classes</h1>
             <p>{course.shortDescription}</p>
             <div className="hero__actions">
-              <WhatsAppButton message={course.whatsappMessage} />
+              <WhatsAppButton message={course.whatsappMessage} label="Ask About This Class" />
             </div>
           </div>
           <div className="price-card">
@@ -26,6 +29,11 @@ export default function CoursePage({ course }) {
               Duration
             </span>
             <strong>{course.duration}</strong>
+            <span>
+              <Radio size={22} aria-hidden="true" />
+              Format
+            </span>
+            <strong>Live Sessions</strong>
           </div>
         </div>
       </section>
@@ -49,13 +57,13 @@ export default function CoursePage({ course }) {
 
           <article className="content-panel">
             <div className="panel-title">
-              <CheckCircle2 size={25} aria-hidden="true" />
-              <h2>Practical business usage focus</h2>
+              <MessageCircleQuestion size={25} aria-hidden="true" />
+              <h2>Doubts during class</h2>
             </div>
             <p>
-              This course is structured around real reporting, cleaning,
-              automation, and decision-support situations instead of isolated
-              tool features.
+              This is not positioned as a recorded course. The live format is
+              designed so students can ask questions while practicing real
+              reporting, dashboarding, or automation workflows.
             </p>
           </article>
         </div>
@@ -65,8 +73,8 @@ export default function CoursePage({ course }) {
         <div className="container">
           <SectionTitle
             eyebrow="Learning roadmap"
-            title="What students will learn"
-            text="Each module is built to move from concept to hands-on practice."
+            title="What students will practice"
+            text="Each module is built to move from concept to hands-on live practice."
           />
           <div className="learning-grid">
             {course.learn.map((item) => (
@@ -85,11 +93,11 @@ export default function CoursePage({ course }) {
             <p className="eyebrow">Course inquiry</p>
             <h2>Ask for demo class details</h2>
             <p>
-              The WhatsApp message is pre-filled with this course name, fee, and
-              duration. You can edit it before sending.
+              The WhatsApp message is pre-filled with this live course name. You
+              can edit it before sending.
             </p>
           </div>
-          <WhatsAppButton message={course.whatsappMessage} />
+          <WhatsAppButton message={course.whatsappMessage} label="Send Course Inquiry" />
         </div>
       </section>
     </>

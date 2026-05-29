@@ -1,75 +1,64 @@
 import {
-  BarChart3,
+  Bot,
   CheckCircle2,
-  GraduationCap,
-  Users,
+  FileSpreadsheet,
+  LayoutDashboard,
+  MessageCircleQuestion,
+  TableProperties,
 } from 'lucide-react'
 import CourseCard from '../components/CourseCard'
+import CTASection from '../components/CTASection'
+import Faq from '../components/FAQ'
+import Hero from '../components/Hero'
+import LiveClassBenefits from '../components/LiveClassBenefits'
 import SectionTitle from '../components/SectionTitle'
 import WhatsAppButton from '../components/WhatsAppButton'
-import trainerImage from '../assets/kuldeep_sharma.png'
 import { courses, generalQueryMessage } from '../data/courses'
 
-const reasons = [
+const skillBlocks = [
   {
-    icon: <GraduationCap size={27} aria-hidden="true" />,
-    title: 'Practical Training',
-    text: 'Learn through real business examples, guided exercises, and project-style assignments.',
+    icon: FileSpreadsheet,
+    title: 'Excel formulas',
+    text: 'Build useful formulas for lookup, logical checks, summaries, and report-ready outputs.',
   },
   {
-    icon: <BarChart3 size={27} aria-hidden="true" />,
-    title: 'Business Usage Focus',
-    text: 'Every topic connects to reporting, automation, dashboards, or daily office productivity.',
+    icon: TableProperties,
+    title: 'Power Query workflows',
+    text: 'Clean and reshape messy data so repeated reporting work becomes easier.',
   },
   {
-    icon: <Users size={27} aria-hidden="true" />,
-    title: 'Career Oriented',
-    text: 'Build skills that support analyst, MIS, operations, and automation-focused roles.',
+    icon: LayoutDashboard,
+    title: 'Dashboards and visuals',
+    text: 'Create practical dashboards that help explain sales, finance, operations, or MIS data.',
+  },
+  {
+    icon: Bot,
+    title: 'Apps Script automation',
+    text: 'Automate Google Sheets tasks with custom menus, alerts, web apps, and workflows.',
+  },
+  {
+    icon: MessageCircleQuestion,
+    title: 'Live doubt solving',
+    text: 'Ask questions during class and understand the exact step where you are stuck.',
+  },
+  {
+    icon: CheckCircle2,
+    title: 'Business examples',
+    text: 'Practice with office-style cases instead of only tool features and disconnected theory.',
   },
 ]
 
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="container hero__grid">
-          <div className="hero__content">
-            <p className="eyebrow">ExcelCut online academy</p>
-            <div className="hero-offer-strip" aria-label="Limited period demo session offer">
-              <span>2 Days Demo Session for LIMITED PERIOD only</span>
-            </div>
-            <h1>Best Skill Growth Courses for Working Professionals.</h1>
-            <p>
-              Learn Advanced Excel, Power BI, and Google Apps Script through
-              practical, business-focused training designed for real workplace
-              growth.
-            </p>
-            <div className="hero__actions">
-              <WhatsAppButton message={generalQueryMessage} label="Ask for Details" />
-              <a href="#courses" className="secondary-button">
-                Explore Courses
-              </a>
-            </div>
-          </div>
-
-          <div className="trainer-hero" aria-label="Trainer Kuldeep Sharma">
-            <div className="trainer-hero__frame">
-              <img src={trainerImage} alt="Kuldeep Sharma" />
-            </div>
-            <div className="trainer-signature">
-              <span>Kuldeep Sharma</span>
-              <p>Trainer and course mentor</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       <section className="section" id="courses">
         <div className="container">
           <SectionTitle
-            eyebrow="Choose your course"
-            title="Skill-building courses for modern office work"
-            text="Start with one focused course or build a complete reporting and automation skill stack."
+            eyebrow="Live course catalog"
+            title="Choose a practical live class"
+            text="Each course is built around trainer-led sessions, guided practice, and direct doubt support during the live class."
           />
           <div className="course-grid">
             {courses.map((course) => (
@@ -79,41 +68,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--soft">
+      <LiveClassBenefits />
+
+      <section className="section" id="skills">
         <div className="container">
           <SectionTitle
-            eyebrow="Why join"
-            title="Designed for practical career growth"
-            text="The training keeps theory tight and spends more time on useful workflows students can apply immediately."
+            eyebrow="What you will learn"
+            title="Skills connected to real office work"
+            text="The focus is simple: understand the tool, practice the workflow, and connect it to business reporting or automation."
           />
-          <div className="feature-grid">
-            {reasons.map((reason) => (
-              <article className="feature-card" key={reason.title}>
-                <div className="icon-box">{reason.icon}</div>
-                <h3>{reason.title}</h3>
-                <p>{reason.text}</p>
+          <div className="skill-grid">
+            {skillBlocks.map(({ icon: Icon, title, text }) => (
+              <article className="skill-card" key={title}>
+                <div className="icon-box">
+                  <Icon size={25} aria-hidden="true" />
+                </div>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <CTASection />
+
+      <section className="section section--soft">
         <div className="container split-section">
           <div>
-            <p className="eyebrow">Demo classes</p>
-            <h2>Attend 2 Days Demo Classes before you decide</h2>
+            <p className="eyebrow">Before enrolling</p>
+            <h2>Ask your questions before deciding</h2>
             <p>
-              Get a clear view of the teaching style, course structure, and
-              practical project approach before joining the complete program.
+              Send a WhatsApp message for demo class details, batch timing, and
+              course fit. You can mention your current skill level and the type
+              of office work you want to improve.
             </p>
           </div>
-          <div className="check-list">
+          <div className="check-list panel-list">
             {[
-              'Understand the learning roadmap',
-              'See real business examples',
-              'Ask course-specific questions',
-              'Confirm the best course for your goal',
+              'Confirm whether Excel, Power BI, or Apps Script is the right first step',
+              'Understand the live class format and practice style',
+              'Ask about batch timing, duration, and fee',
+              'Join demo classes before making a final decision',
             ].map((item) => (
               <span key={item}>
                 <CheckCircle2 size={20} aria-hidden="true" />
@@ -124,17 +120,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container cta-section__inner">
+      <Faq />
+
+      <section className="final-contact">
+        <div className="container final-contact__inner">
           <div>
-            <p className="eyebrow">Start learning</p>
-            <h2>Ready to discuss your course?</h2>
-            <p>
-              Message on WhatsApp for demo class details, batch timing, and the
-              right course recommendation.
-            </p>
+            <p className="eyebrow">Ready to connect?</p>
+            <h2>Discuss live class details on WhatsApp</h2>
           </div>
-          <WhatsAppButton message={generalQueryMessage} label="Send Query" />
+          <WhatsAppButton message={generalQueryMessage} label="Send WhatsApp Inquiry" />
         </div>
       </section>
     </>

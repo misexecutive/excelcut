@@ -1,14 +1,16 @@
-import { Menu, X } from 'lucide-react'
+import { MessageCircle, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import ThemeSwitcher from './ThemeSwitcher'
+import { generalQueryMessage } from '../data/courses'
+import { createWhatsAppLink } from '../utils/whatsapp'
 
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/advanced-excel', label: 'Advanced Excel' },
   { to: '/power-bi', label: 'Power BI' },
   { to: '/apps-script', label: 'Apps Script' },
-  { to: '/student-reviews', label: 'Student Reviews' },
-  { to: '/send-query', label: 'Send Query' },
+  { to: '/student-reviews', label: 'Learner Info' },
 ]
 
 export default function Navbar() {
@@ -43,6 +45,16 @@ export default function Navbar() {
               {link.label}
             </NavLink>
           ))}
+          <ThemeSwitcher />
+          <a
+            className="nav-cta"
+            href={createWhatsAppLink(generalQueryMessage)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <MessageCircle size={17} aria-hidden="true" />
+            WhatsApp
+          </a>
         </div>
       </nav>
     </header>

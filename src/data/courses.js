@@ -6,7 +6,9 @@ export const courses = [
     fee: '₹4,500/-',
     duration: '3 Months',
     shortDescription:
-      'Master business-ready spreadsheets, reporting workflows, formulas, cleaning, and automation foundations.',
+      'Live classes for formulas, lookup functions, Power Query basics, data cleaning, dashboards, and office reports.',
+    outcome:
+      'Build cleaner reports, solve common office data problems, and present spreadsheet insights with confidence.',
     audience: [
       'Students preparing for office and analyst roles',
       'Working professionals who manage reports and MIS',
@@ -18,11 +20,13 @@ export const courses = [
       'Text, date, and logical functions for practical workflows',
       'Data cleaning, validation, and error handling',
       'Power Query basics for repeatable data preparation',
+      'Dashboard creation for real office reports',
       'VBA basics for simple automation tasks',
     ],
-    highlights: ['Formula mastery', 'Power Query basics', 'VBA basics'],
+    highlights: ['Formula mastery', 'Power Query basics', 'Doubt support'],
+    topics: ['XLOOKUP', 'SUMIFS', 'Data cleaning', 'Dashboards', 'Office reports'],
     whatsappMessage:
-      'Hi Kuldeep Sir, I am interested in the Advanced Excel Course. Course Duration: 3 Months, Fee: ₹4,500/-. Please share demo class details.',
+      'Hi, I want to know more about the Live Online Advanced Excel Classes. Please share demo class details, timing, duration, and fee.',
   },
   {
     id: 'power-bi',
@@ -31,7 +35,9 @@ export const courses = [
     fee: '₹4,500/-',
     duration: '3 Months',
     shortDescription:
-      'Build business dashboards with Power Query, data modeling, DAX, and live project practice.',
+      'Live dashboard training with Power Query, data modeling, DAX, reports, and business insight practice.',
+    outcome:
+      'Turn raw business data into clean dashboards, practical measures, and decision-ready reports.',
     audience: [
       'Excel users moving into dashboard and BI roles',
       'Analysts who need better reporting and storytelling',
@@ -45,9 +51,10 @@ export const courses = [
       'Business reports for sales, finance, and performance tracking',
       'Live project practice from raw data to finished dashboard',
     ],
-    highlights: ['DAX', 'Data modeling', 'Live projects'],
+    highlights: ['DAX', 'Data modeling', 'Doubt support'],
+    topics: ['Power Query', 'Data model', 'DAX', 'KPI reports', 'Dashboards'],
     whatsappMessage:
-      'Hi Kuldeep Sir, I am interested in the Power BI Mastery Course. Course Duration: 3 Months, Fee: ₹4,500/-. Please share demo class details.',
+      'Hi, I want to know more about the Live Online Power BI Mastery Classes. Please share demo class details, timing, duration, and fee.',
   },
   {
     id: 'apps-script',
@@ -56,7 +63,9 @@ export const courses = [
     fee: '₹5,400/-',
     duration: '3 Months',
     shortDescription:
-      'Automate Google Workspace using Apps Script, Sheets workflows, web apps, email, and PDF generation.',
+      'Live automation classes for Google Sheets workflows, custom menus, web apps, email, and PDF generation.',
+    outcome:
+      'Automate repetitive Google Sheets work and build practical internal tools for everyday processes.',
     audience: [
       'Google Sheets users who repeat manual tasks daily',
       'Operations teams building lightweight internal tools',
@@ -70,11 +79,12 @@ export const courses = [
       'PDF generation basics from Sheets and templates',
       'Workflow automation across Google Workspace tools',
     ],
-    highlights: ['Sheets automation', 'Web apps', 'Email workflows'],
+    highlights: ['Sheets automation', 'Web apps', 'Doubt support'],
+    topics: ['Automation', 'Custom menus', 'Web apps', 'Email alerts', 'API style flows'],
     whatsappMessage:
-      'Hi Kuldeep Sir, I am interested in the Google Apps Script Course. Course Duration: 3 Months, Fee: ₹5,400/-. Please share demo class details.',
+      'Hi, I want to know more about the Live Online Google Apps Script Classes. Please share demo class details, timing, duration, and fee.',
   },
 ]
 
 export const generalQueryMessage =
-  'Hi Kuldeep Sir, I want to know more about your online courses. Please share the details.'
+  'Hi, I want to know more about your live online classes for Excel, Power BI, and Apps Script. Please share demo class details.'
